@@ -18,12 +18,14 @@ int main(){
     ifstream file_handle ("/proc/acpi/ibm/thermal");
     string line;
     if(file_handle.is_open()){
+        
         while(getline(file_handle,line)){
             cout<<"tempreture stanza is found"<<endl;
             cout<<line<<endl;
             line = line.substr(14,2);
             break;
         }
+    
     }else{
         cout<<"unable to collect tempreture info.."<<endl;
     }
@@ -34,6 +36,8 @@ int main(){
         //send alarm
         cout<<"sending alarm....";
         cout<<'\a';
+        //TO_DO
+        //add notifications with lib-notification
     }
     
     return 0;
